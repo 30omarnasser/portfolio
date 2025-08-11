@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Omar Nasser — Industrial Automation & AI</title>
+<meta name="description" content="Portfolio of Omar Nasser — Industrial automation engineer and AI projects"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1724; --card:#0b1220; --accent:#0ea5a4; --muted:#94a3b8; --maxw:1000px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:var(--bg);color:#e6eef8;line-height:1.5}
+  header{position:fixed;top:0;left:0;right:0;background:rgba(5,10,18,0.7);backdrop-filter:blur(6px);z-index:40}
+  .nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px}
+  .brand{font-weight:700}
+  nav a{color:var(--muted);margin-left:18px;text-decoration:none;padding:6px 8px;border-radius:6px}
+  nav a.active{color:#fff;background:rgba(255,255,255,0.04)}
+  main{max-width:var(--maxw);margin:92px auto 60px;padding:0 18px}
+  section{padding:48px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+  .hero{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .hero .left{flex:1;min-width:240px}
+  .hero h1{margin:0;font-size:28px}
+  .hero p{color:var(--muted);margin-top:8px}
+  .cta{margin-top:12px}
+  .cta a{display:inline-block;margin-right:10px;padding:8px 12px;border-radius:8px;text-decoration:none;background:var(--accent);color:#022; font-weight:600}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+  .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+  .card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+  .muted{color:var(--muted);font-size:14px}
+  .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .chip{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+  footer{max-width:var(--maxw);margin:28px auto 90px;padding:0 18px;color:var(--muted);font-size:14px}
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:80;opacity:0;pointer-events:none;transition:opacity .18s}
+  .modal.open{opacity:1;pointer-events:auto}
+  .modal .inner{max-width:900px;width:94%;background:#041124;padding:12px;border-radius:10px;position:relative}
+  .closeBtn{position:absolute;right:8px;top:6px;background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer}
+  @media(max-width:720px){
+    .hero{flex-direction:column-reverse}
+    header .nav{padding:10px}
+  }
+  /* small helper */
+  .muted-small{color:var(--muted);font-size:13px}
+  .filters{display:flex;gap:8px;margin-bottom:8px}
+  .filters button{background:rgba(255,255,255,0.02);border:0;padding:8px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
+  .filters button.active{background:var(--accent);color:#022}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">Omar Nasser</div>
+    <nav id="topNav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#ai">AI Projects</a>
+      <a href="#courses">Courses</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="about" aria-labelledby="aboutTitle">
+    <div class="hero">
+      <div class="left">
+        <h1 id="aboutTitle">Omar Nasser — Industrial Automation & AI</h1>
+        <p>I design and build PLC & SCADA systems, and apply AI/ML for industrial monitoring and predictive maintenance. I focus on practical demos, reproducible code, and real outcomes.</p>
+        <div class="cta">
+          <a href="#projects">View Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="skills">
+          <div class="chip">Siemens</div><div class="chip">OPC UA</div><div class="chip">MQTT</div><div class="chip">Python</div><div class="chip">TensorFlow</div>
+        </div>
+      </div>
+      <div class="right" style="min-width:200px">
+        <img src="https://via.placeholder.com/360x260?text=Your+Photo" alt="Your photo" style="border-radius:12px;width:100%;height:auto;object-fit:cover">
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="projectsTitle">
+    <h2 id="projectsTitle">Projects</h2>
+    <p class="muted-small">Select filter to show different project types</p>
+    <div class="filters" role="tablist">
+      <button class="filterBtn active" data-filter="all">All</button>
+      <button class="filterBtn" data-filter="industrial">Industrial</button>
+      <button class="filterBtn" data-filter="ai">AI</button>
+    </div>
+
+    <div class="grid" id="projectsGrid">
+      <article class="card project-card" data-type="industrial">
+        <img src="https://via.placeholder.com/640x360?text=Encoder+Logging" alt="Encoder logging">
+        <h3>Encoder Data Logger (OPC UA → PC)</h3>
+        <p class="muted-small">Logged HSC pulses over OPC UA and visualized in Grafana. Role: system integrator.</p>
+        <div style="margin-top:8px"><a href="#" class="muted-small media-open" data-img="https://via.placeholder.com/1280x720?text=Screenshot">View image</a> • <a href="https://github.com/your-repo" target="_blank" class="muted-small">Repo</a></div>
+      </article>
+
+      <article class="card project-card" data-type="ai">
+        <img src="https://via.placeholder.com/640x360?text=VisionSense" alt="VisionSense demo">
+        <h3>VisionSense — Emotion & Behavior Analyzer</h3>
+        <p class="muted-small">Face detection, behavior classification; deployed demo and dataset preprocessing scripts.</p>
+        <div style="margin-top:8px"><a href="#" class="muted-small media-open" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">Play demo</a> • <a href="https://github.com/your-repo" target="_blank" class="muted-small">Repo</a></div>
+      </article>
+
+      <!-- add more project cards here -->
+    </div>
+  </section>
+
+  <section id="ai" aria-labelledby="aiTitle">
+    <h2 id="aiTitle">AI Projects</h2>
+    <p class="muted-small">Short descriptions, metrics, dataset sources, and model details. Link to notebooks and demos.</p>
+    <div class="grid">
+      <div class="card">
+        <h4>Predictive Motor Failure</h4>
+        <p class="muted-small">Used vibration sensors + LSTM to predict failures 48h in advance. 92% F1 on test set.</p>
+        <div class="muted-small">Stack: Python, Pandas, PyTorch</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="courses" aria-labelledby="coursesTitle">
+    <h2 id="coursesTitle">Courses & Certificates</h2>
+    <div class="grid">
+      <div class="card">
+        <h4>Industrial Control Systems Cybersecurity - CISA</h4>
+        <p class="muted-small">Certificate image / link to PDF</p>
+      </div>
+      <div class="card">
+        <h4>IBM — Data Analysis & Python</h4>
+        <p class="muted-small">Course thumbnails & links</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="expTitle">
+    <h2 id="expTitle">Experience</h2>
+    <div class="card">
+      <h4>Automation Engineer — Company X</h4>
+      <p class="muted-small">Designed PLC ladder logic for packaging line; integrated OPC UA to MES; reduced downtime by 12%.</p>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contactTitle">
+    <h2 id="contactTitle">Contact</h2>
+    <p class="muted-small">Email: <a href="mailto:omarq1060@gmail.com">omarq1060@gmail.com</a> • LinkedIn • GitHub</p>
+    <p class="muted-small">If you want a contact form, use Formspree or getform.io (free plan).</p>
+  </section>
+</main>
+
+<!-- modal -->
+<div id="modal" class="modal" role="dialog" aria-hidden="true">
+  <div class="inner" role="document">
+    <button class="closeBtn" aria-label="Close">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<footer>
+  <div style="max-width:var(--maxw);margin:0 auto;padding:0 18px">Built by Omar • Download resume (PDF) • ©</div>
+</footer>
+
+<script>
+/* 1) Smooth scroll & nav highlighting */
+const navLinks = document.querySelectorAll('nav a');
+const sections = Array.from(document.querySelectorAll('main section'));
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = e.target.id;
+      navLinks.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+    }
+  });
+},{root:null,threshold:0.55});
+sections.forEach(s=>obs.observe(s));
+
+/* 2) Modal for images & videos */
+const modal = document.getElementById('modal');
+const modalContent = document.getElementById('modalContent');
+document.body.addEventListener('click', (ev)=>{
+  const t = ev.target.closest('.media-open');
+  if(!t) return;
+  ev.preventDefault();
+  modalContent.innerHTML = '';
+  if(t.dataset.img){
+    const img = document.createElement('img');
+    img.src = t.dataset.img;
+    img.alt = t.dataset.alt || '';
+    img.style.maxWidth = '100%';
+    modalContent.appendChild(img);
+  } else if(t.dataset.video){
+    const iframe = document.createElement('iframe');
+    iframe.src = t.dataset.video + '?autoplay=1&rel=0';
+    iframe.width = '100%';
+    iframe.height = '480';
+    iframe.frameBorder = 0;
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    modalContent.appendChild(iframe);
+  }
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+});
+modal.querySelector('.closeBtn').addEventListener('click', closeModal);
+modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+function closeModal(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  modalContent.innerHTML = '';
+}
+
+/* 3) Simple project filter */
+document.querySelectorAll('.filterBtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.filterBtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.project-card').forEach(card=>{
+      card.style.display = (f === 'all' || card.dataset.type === f) ? '' : 'none';
+    });
+  });
+});
+
+/* Accessibility: close modal on ESC */
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
